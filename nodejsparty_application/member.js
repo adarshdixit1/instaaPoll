@@ -32,17 +32,17 @@ app.use(jsonParser);
 
 app.post("/Add_Member", (req, res) => {
     console.log("hello", req.body)
-    const{Name}=req.body;
-    console.log(Name)
+    const{Event,Name}=req.body;
+    console.log(Event,Name)
 
     // Enter data into database
-    const sql = 'insert into participant (Name) values(?)';
+    const sql = 'insert into participants (Event,Name) values(?, ?)';
     
 
     // with placeholder
     connection.query(
         sql,
-        [Name],
+        [Event,Name],
         function (err, results) {
             if (results) {
                 data = { message: "Member data for party is done", Boolean: 1 }

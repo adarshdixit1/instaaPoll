@@ -31,31 +31,43 @@ app.use(cors());
 var jsonParser = bodyparser.json()
 app.use(jsonParser);
 
-app.post("/Party", (req, res) => {
-    console.log("hello", req.body)
-    const { name, rating } = req.body;
-    console.log(name, rating);
+app.post("/eventRating", (req, res) => {
+    // console.log("hello", req.body)
+    for(i=0;i<req.body.ratingValue.length;i++){
+        let Participant=req.body.participantId[i].Id
+        console.log(Participant)
+        let RatingPoint=req.body.ratingValue[i]
+        console.log(RatingPoint)
 
-    // Enter data into database
-    const sql = 'insert into party (Name,Number) values(?, ?)';
+        // Enter data into database
+  const sql = 'insert into rating  (Participant,RatingPoint) values(?, ?)';
 
-    // with placeholder
-    connection.query(
-        sql,
-        [name,rating],
-        function (err, results) {
-            if (err) {
-                data = { message: "error", Boolean: 0 }
-                res.json(data)
-            }
-            else {
-                data = { message: "Party is schedule", Boolean: 1 }
-                res.json(data)
-            }
-            //   console.log(results, "this is result");
-            //   console.log(err, "this is error")
-        });
-})
+  connection.query(
+    sql,
+    [Participant,RatingPoint],
+    function (err, results) {
+          console.log(results, "this is result");
+          // console.log(err, "this is error")
+    });
+    }
+
+
+    // data=req.body
+//     const keys = Object.keys(data);
+// const keysWithValue = keys.filter((key) => data[key] !== null);
+// i=0
+// keysWithValue.forEach((key) => {
+    // i=key
+    // console.log(data[i])
+//   console.log(key);
+//   event_id=parseInt(key)
+  
+  // with placeholder
+ 
+
+});   
+    // } 
+// )
 
 app.listen(port, () => {
     console.log(`The application started successfully on port ${port}`);

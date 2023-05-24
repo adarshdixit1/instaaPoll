@@ -8,7 +8,12 @@ const port = 80;
 // get the client
 const mysql = require('mysql2');
 const { error } = require("console");
+let cors = require("cors");
+app.use(cors());
 
+// create application/json parser
+var jsonParser = bodyparser.json()
+app.use(jsonParser);
 // create the connection to database
 const connection = mysql.createConnection({
     host: 'localhost',
@@ -24,12 +29,7 @@ connection.connect(err=>{
 })
 
 
-let cors = require("cors");
-app.use(cors());
 
-// create application/json parser
-var jsonParser = bodyparser.json()
-app.use(jsonParser);
 
 app.post("/home", (req, res) => {
     console.log("hello", req.body)
@@ -38,30 +38,38 @@ app.post("/home", (req, res) => {
 
     // console.log(jsonParser)
 
-    connection.query(`select * from singup where email='${email}' and password='${password}'`, (error, resp, field) => {
+    connection.query(`select * from users where email='${email}' and password='${password}'`, (error, resp, field) => {
         // res.json({ status: resp });
+        console.log(resp)
+        const user =resp[0].Id
+        const name =resp[0].Name
             if(email=="ajfo12@gmail.com" && password=="Adarsh"){
                 console.log("Admin login")
-               data= {message:"success",data:"You are admin", Boolean:1}
+               data= {Id:user ,data:"You are admin", Boolean:1,Name:name}
                 res.json(data)
             }
             else if (resp.length > 0) {
                 console.log("Enter a right username")
-                data= {message:"success",data:"you are success fully login", Boolean:1}
+                data= {Id:user,data:"you are success fully login", Boolean:1, Name:name}
                 res.json(data)
             }
             else{
                 console.log("You enter a wrong username and password")
                 data= {message:"success",data:"Error", Boolean:0}
                 res.json(data)
-            }      
+            } 
+            
+            console.log(resp[0].Id)
+            // const user =resp[0].Id
+            return user
     });
 })
 
-app.get("/home", (req, res) => {
-    
-    res.send();
-})
+// app.get("/home", (req, res) => { 
+//     res.send();
+// })
+
+
 
 app.listen(port, () => {
     console.log(`The application started successfully on port ${port}`);

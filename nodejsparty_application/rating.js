@@ -17,6 +17,10 @@ const connection = mysql.createConnection({
     password: 'Adarsh!@#$%1',
 });
 
+// create application/json parser
+var jsonParser = bodyparser.json()
+app.use(jsonParser);
+
 // check database connection
 connection.connect(err => {
     if (err) { (console.log('err')) }
@@ -25,11 +29,18 @@ connection.connect(err => {
 let cors = require("cors");
 app.use(cors());
 
-app.get("/Rating",(req,res)=>{
-    const sql=`SELECT Name as name, AVG(number) as number  FROM akash.party GROUP BY name;`
+app.post("/rating",(req,res)=>{
+//   let data=req.body
+    console.log(req.body.event_id,"this is req.body")
+    const sql=`SELECT p.Name, ROUND(AVG(r.RatingPoint),1) as Rating
+    FROM participants p
+    INNER JOIN rating r ON p.Id = r.Participant 
+    where p.Event='${req.body.event_id}'
+    GROUP BY p.Name
+    order by Rating desc;`
 
     connection.query(sql,function(err,result){
-        console.log(err)
+        // console.log(err)
         const data = result
         console.log(data)
         res.json(data)
