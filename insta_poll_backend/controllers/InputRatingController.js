@@ -5,7 +5,7 @@ const ParticipantNameForRating=(req,res)=>{
     // console.log(req.body.user_id,"this is nodejs data")
     // res.json("test");
     const data= req.body.event_id
-    console.log(req.body)
+    // console.log(req.body,"this is input name for rating")
     const sql=`SELECT * FROM akash.events where Id=${data};`
     let participantsDetail;
     let eventDetail;
@@ -26,6 +26,7 @@ const ParticipantNameForRating=(req,res)=>{
 
 const inputRating=(req,res)=>{
     for(i=0;i<req.body.ratingValue.length;i++){
+        console.log(req.body.ratingValue.length,"this is length value",i)
         let Participant=req.body.participantId[i].Id
         console.log(Participant)
         let RatingPoint=req.body.ratingValue[i]
@@ -39,11 +40,10 @@ const inputRating=(req,res)=>{
     [Participant,RatingPoint],
     function (err, results) {
           console.log(results, "this is result");
-          // console.log(err, "this is error")
+          console.log(err, "this is error")
     });
-    
-    res.json({ status: "success", message: "Rating is submitted" });
     }
+    res.json({ status: "success", message: "Rating is submitted" });
 }
 // app.post("/eventRating", (req, res) => {
 //     console.log("hello", req.body)

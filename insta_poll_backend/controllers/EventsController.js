@@ -1,5 +1,9 @@
 const connection = require("../config/database")
 
+const deleteEvent=(req,res)=>{
+
+}
+
 const creatEventData= (req,res) => {
     console.log("hello", req.body)
     const {User, Name, Place,Description,Date,Time} = req.body;
@@ -117,7 +121,7 @@ const InputCreatLink=(req,res)=>{
                 res.json(data)
             }
             //   console.log(results, "this is result");
-            //   console.log(err, "this is error")
+              console.log(err, "this is error")
         });
 }
 // app.post("/eventlink", (req, res) => {
@@ -130,4 +134,5 @@ module.exports = {
     addParticipants,
     showParticipants,
     InputCreatLink,
+    deleteEvent
 };
