@@ -55,5 +55,7 @@ li a{
     font-weight: bold;
     font-size: 18px;
     background-color: #e85fab;
-
+}
+#logo{
+    border-radius: 4px;
 }
