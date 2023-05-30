@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="block">
+    <button class="btn btn-primary" (click)="submit()">Creat Events</button>
+    <div class="contain" *ngFor="let user of users">
+      <div class="title">{{user.Name | titlecase}} | {{user.Place| titlecase}}</div>
+      <div> {{user.StartDate | date: 'dd-MM-yyyy'}} | {{user.StartTime}}</div>
+      <div class="button">
+        <div><button type="button"  id="First" class="btn btn-primary" (click)="openPopup(user.Id,user.Name)">Creat Link</button></div>
+        <div><button id="Secound" class="btn btn-primary" (click)="add(user.Id,user.Name)">Add Participant</button></div>
+        <div><button id="third" class="btn btn-primary" (click)="Rating(user.Id,user.Name)"> View Rating</button></div>
+        <button type="button" id="First" class="btn btn-danger" (click)="Delete()" >Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<section class="display" [ngStyle]="{'display':displayStyle}">
+  <div class="block2">
+    <div class="linktitle"><h1>{{Title| titlecase}}</h1></div>
+    <div>
+      <span>Your link : </span><span ><a href={{link}}>{{link}}</a></span>
+    </div>
+    <form #myForm="ngForm" (ngSubmit)="OnSubmit()">
+      <span class="form-group" id="inputbox">
+          <label>Select Active Hours</label>
+          <input type="number" class="form-control" id="party" [(ngModel)]="formData.Hour" name="something"  placeholder="Duration of rating">
+      </span>
+<div>
+  <button id="admin" type="submit" class="btn btn-primary me-2">Submit</button>
+      <button id="admin" type="button" class="btn btn-outline-primary" (click)="closePopup()">Close</button>
+</div>
+      
+  </form>
+  </div>
+</section>

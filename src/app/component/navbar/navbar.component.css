@@ -1,0 +1,59 @@
+/* .header {
+    background-color: #e85fab;
+    height: 50px;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    padding: 0.5rem;
+}
+
+.heading{
+    color: white;
+    font-size: large;
+    margin-left: 1rem;
+}
+
+.loginlnk{
+    color: white;
+text-decoration: none;
+float: right;
+margin-right: 2rem;
+font-size: large;
+}
+
+.loginlnk a{
+    color: white;
+    text-decoration: none;
+    cursor:pointer;
+}
+
+.frontPage a{
+    color: white;
+    text-decoration: none;
+    margin-left: 2rem;
+}
+
+.center{
+    margin-left: 45%;
+    color: white;
+    font-size: large;
+} */
+
+/* #right{
+    float: right;
+} */
+
+#backgroundColor{
+    background-color: blue;
+}
+
+li a{
+    color: white;
+}
+.active{
+    font-weight: bold;
+    font-size: 18px;
+    background-color: #e85fab;
+
+}

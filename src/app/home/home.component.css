@@ -1,0 +1,71 @@
+.background{
+    /* background-image: url(../../assets/party1.jpg); */
+    background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 100vh;
+  
+}
+.container{
+    display: flex;
+  justify-content: center;  
+}
+
+.contain{
+    margin-top: 7rem;
+    width: 35%;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    padding: 19px;
+    background-color: aliceblue;
+    border-radius: 6px;
+    border-top: 7px solid #362c59;
+}
+
+h3{
+    font-size: 20px;
+    font-weight: bold;
+    color: red;
+    margin-right: 3rem;
+}
+.errorHeading{
+    display: flex;
+justify-content: center;
+}
+
+.header{
+    opacity: 0.4;
+}
+
+.error{
+    color: red;
+    font-weight: bold;
+}
+
+#Back{
+    position: fixed;
+    top: 0.55rem;
+    right: 2rem;
+    width: 5rem;
+}
+
+#button{
+display: flex;
+justify-content: center;
+margin: auto;
+margin-top: 2rem;
+width: 5rem;
+}
+
+@media (max-width:480px) {
+    .container{
+        display: flex;
+      justify-content: center;  
+    }
+    
+    .contain{
+        margin-top: 5rem;
+width: 88%;
+height: 17rem;
+    }
+    
+}

@@ -1,0 +1,96 @@
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { PartydetailInserviceService } from 'src/app/services/partydetail-inservice.service';
+import { HomeNavDataservicesService } from '../new/home-nav-dataservices.service';
+import { EventlinkserviceService } from '../new/eventlinkservice.service';
+import { CreatlinkserviceService } from '../new/creatlinkservice.service';
+import { environment } from 'src/environments/environment';
+
+@Component({
+  selector: 'app-party-detail-show',
+  templateUrl: './party-detail-show.component.html',
+  styleUrls: ['./party-detail-show.component.css']
+})
+export class PartyDetailShowComponent implements OnInit {
+  users: any
+  baseURL: string=environment.sideUrl;
+  constructor(private router: Router, private partydetailservice: PartydetailInserviceService, private homeNavDataServices: HomeNavDataservicesService, private eventlinkservive: EventlinkserviceService, private creatlinkservice:CreatlinkserviceService) {
+    //     this.partydetailservice.users().subscribe((data:any)=>{
+    //       console.log(data, "this is data in party Detail ts file")
+    // this.users=data
+    //     })
+  
+  }
+  link: string = ''
+
+  submit() {
+    this.router.navigate(['/add-event']);
+  }
+  Rating(data: any, Name: any) {
+    this.router.navigate(['/view-rating'])
+    localStorage.setItem("Id", data)
+    localStorage.setItem("ParticipantName", Name)
+  }
+  add(data: any, Name: any) {
+    this.router.navigate(['/add-participant'])
+    localStorage.setItem("Id", data)
+    localStorage.setItem("ParticipantName", Name)
+  }
+  Delete(){
+    
+  }
+  ngOnInit(): void {
+    console.log('subject emit')
+    this.homeNavDataServices.AddDashboard.next(true);
+  
+    if (localStorage.getItem('check')) {
+      let val = localStorage.getItem('check');
+      this.partydetailservice.postData({ user_id: val }).subscribe((response: any) => {
+        this.users = response
+        console.log(this.users)
+      })
+    } else {
+      this.router.navigate(['/login'])
+    }
+  }
+
+  displayStyle = "none";
+  Title: any
+  EventId: any
+  openPopup(data: any, Name: any) {
+    this.displayStyle = "block";
+    localStorage.setItem("Id", data)
+    this.link = this.baseURL+'eventrating/' + data
+    localStorage.setItem("ParticipantName", Name)
+    this.EventId = data
+    this.payload();
+// this.creatlink();
+  }
+  closePopup() {
+    this.displayStyle = "none";
+  }
+
+  payload() {
+    this.Title = localStorage.getItem('ParticipantName')
+    this.EventId = localStorage.getItem('Id')
+  }
+
+  // for sending data to eventlink table
+  formData = {
+    Hour: "6"
+    // Event: '',
+    // Link: ''
+  }
+  OnSubmit() {
+    console.log(this.formData, "this is formData of creatlink")
+    this.eventlinkservive.eventlink({hour: this.formData.Hour, link: this.link, event_id: this.EventId}).subscribe((data: any) => {
+      console.log(data, "this is data in party Detail ts file")
+      this.users = data
+    })
+  }
+creatlink(){
+  this.creatlinkservice.creatlink({event_id:this.EventId,}).subscribe((data:any)=>{
+
+  })
+}
+}

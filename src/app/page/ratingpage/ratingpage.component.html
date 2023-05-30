@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="contain">
+      <div> <h1 class="title">{{title | titlecase}}</h1></div>
+        <table class="table view-rating">
+            <thead>
+              <tr>
+                <!-- <th scope="col">#</th> -->
+                <th scope="col">Participants</th>
+                <th scope="col">Rating</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of users">
+                <!-- <th scope="row">1</th> -->
+                <td>{{user.Name | titlecase}}</td>
+                <td>{{user.Rating}}</td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</div>

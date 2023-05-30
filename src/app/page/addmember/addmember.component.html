@@ -1,0 +1,19 @@
+<div class="contain">
+    <div class="container">
+        <h1 class="heading">{{title | titlecase}}</h1>
+        <button id="admin" class="btn btn-primary" (click)="Back()">Back</button>
+        <div class="show">
+            <form #myForm="ngForm" (ngSubmit)="OnSubmit()" class="form">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="name" [(ngModel)]="formData.Name" name="something"
+                        placeholder="Particiapant Full Name">
+                </div>
+                <button type="submit" class="btn btn-primary" id="button">Add</button>
+            </form>
+            <div class="Add" *ngFor="let person of people">
+                <li>{{person.Name}}</li>
+            </div>
+        </div>
+    </div>
+
+</div>
