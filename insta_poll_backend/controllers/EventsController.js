@@ -1,6 +1,30 @@
 const connection = require("../config/database")
 
 const deleteEvent=(req,res)=>{
+    // console.log("hello", req.body)
+    const {event_id } = req.body;
+    console.log( event_id);
+
+    // Enter data into database
+    const sql = `DELETE akash.participants, akash.rating, akash.events,akash.event_link FROM akash.events AS t1 INNER JOIN akash.event_link AS t2 ON t1.Id = t2.Event INNER JOIN akash.participants AS t3 ON t1.Id= t3.Event INNER JOIN akash.rating AS t4 ON t3.Id = t4.participan WHERE t1.User='3'`
+
+    // with placeholder
+    connection.query(
+        sql,
+        [event_id],
+        function (err, results) {
+            if (err) {
+                data = { message: "error", Boolean: 0 }
+                res.json(data)
+            }
+            else {
+                data = { message: "Party is schedule", Boolean: 1 }
+                res.json(data)
+            }
+              console.log(results, "this is result");
+              console.log(err, "this is error")
+        }); 
+        return;
 
 }
 

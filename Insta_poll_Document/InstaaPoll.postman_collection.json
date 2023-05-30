@@ -1,0 +1,345 @@
+{
+	"info": {
+		"_postman_id": "c73598c8-591b-4fd0-9621-a715af8690b0",
+		"name": "InstaaPoll",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27672140",
+		"_collection_link": "https://madhya-infosoft-instaapoll-748383.postman.co/workspace/InstaaPoll~cd46848d-ffb3-49f7-8dca-6eeb3eb41c5d/collection/27672140-c73598c8-591b-4fd0-9621-a715af8690b0?action=share&creator=27672140&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "Validating Rating Link",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"event_id\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{apiURL}}/validating-link/validating-link",
+					"host": [
+						"{{apiURL}}"
+					],
+					"path": [
+						"validating-link",
+						"validating-link"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Dashboard Data",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "user_id",
+							"value": "1",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{apiURL}}/dashboard/count",
+					"host": [
+						"{{apiURL}}"
+					],
+					"path": [
+						"dashboard",
+						"count"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreatEvent",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"User\":\"1\",\r\n\"Name\":\"Adarsh brithday\",\r\n\"Description\":\"this is test party\",\r\n\"Place\":\"bhopal\",\r\n\"Date\":\"2023-05-24\",\r\n\"Time\":\"11:57\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{apiURL}}/events/party",
+					"host": [
+						"{{apiURL}}"
+					],
+					"path": [
+						"events",
+						"party"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Event Data",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "user_id",
+							"value": "1",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{apiURL}}/dashboard/party_detail",
+					"host": [
+						"{{apiURL}}"
+					],
+					"path": [
+						"dashboard",
+						"party_detail"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View Rating",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "event_id",
+							"value": "1",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{apiURL}}/events/rating?",
+					"host": [
+						"{{apiURL}}"
+					],
+					"path": [
+						"events",
+						"rating"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add participants",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"Event\": \"4\", \"Name\": \"Adarsh\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{apiURL}}/events/Add_Member",
+					"host": [
+						"{{apiURL}}"
+					],
+					"path": [
+						"events",
+						"Add_Member"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show participant",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "Event",
+							"value": "4",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{apiURL}}/events/participant",
+					"host": [
+						"{{apiURL}}"
+					],
+					"path": [
+						"events",
+						"participant"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create Link",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"event_id\": \"3\",\r\n\"hour\": \"6\",\r\n\"link\": \"http://localhost:4200/eventrating/3\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{apiURL}}/events/eventlink",
+					"host": [
+						"{{apiURL}}"
+					],
+					"path": [
+						"events",
+						"eventlink"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Event Rating",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ratingValue\": [\r\n        3,\r\n        4,\r\n        3,\r\n        4,\r\n        4,\r\n        3,\r\n        1\r\n    ],\r\n    \"participantId\": [\r\n        {\r\n            \"Id\": 1,\r\n            \"Event\": \"1\",\r\n            \"Name\": \"Adarsh\",\r\n            \"CreatedDate\": \"2023-05-22T07:05:25.000Z\"\r\n        },\r\n        {\r\n            \"Id\": 2,\r\n            \"Event\": \"1\",\r\n            \"Name\": \"Utkarsh\",\r\n            \"CreatedDate\": \"2023-05-22T07:05:34.000Z\"\r\n        },\r\n        {\r\n            \"Id\": 3,\r\n            \"Event\": \"1\",\r\n            \"Name\": \"Aman\",\r\n            \"CreatedDate\": \"2023-05-22T07:05:48.000Z\"\r\n        },\r\n        {\r\n            \"Id\": 4,\r\n            \"Event\": \"1\",\r\n            \"Name\": \"Anuj\",\r\n            \"CreatedDate\": \"2023-05-22T10:05:22.000Z\"\r\n        },\r\n        {\r\n            \"Id\": 9,\r\n            \"Event\": \"1\",\r\n            \"Name\": \"Akash\",\r\n            \"CreatedDate\": \"2023-05-23T04:56:48.000Z\"\r\n        },\r\n        {\r\n            \"Id\": 14,\r\n            \"Event\": \"1\",\r\n            \"Name\": \"Yash\",\r\n            \"CreatedDate\": \"2023-05-23T05:35:45.000Z\"\r\n        },\r\n        {\r\n            \"Id\": 16,\r\n            \"Event\": \"1\",\r\n            \"Name\": \"Alfaiz\",\r\n            \"CreatedDate\": \"2023-05-23T10:42:49.000Z\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{apiURL}}/inputRating/eventRating",
+					"host": [
+						"{{apiURL}}"
+					],
+					"path": [
+						"inputRating",
+						"eventRating"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Event Rating participant Name",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"event_id\": \"1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{apiURL}}/inputRating/participantName",
+					"host": [
+						"{{apiURL}}"
+					],
+					"path": [
+						"inputRating",
+						"participantName"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ragestation",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Yash jain\",\r\n    \"email\": \"yashjain123@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{apiURL}}/ragestation/ragister",
+					"host": [
+						"{{apiURL}}"
+					],
+					"path": [
+						"ragestation",
+						"ragister"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"adarshdixit310@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{apiURL}}/user/login",
+					"host": [
+						"{{apiURL}}"
+					],
+					"path": [
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
