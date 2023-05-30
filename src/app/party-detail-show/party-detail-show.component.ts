@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PartydetailInserviceService } from 'src/app/services/partydetail-inservice.service';
 import { HomeNavDataservicesService } from '../new/home-nav-dataservices.service';
+import { DeleteServiceService } from '../new/delete-service.service';
 import { EventlinkserviceService } from '../new/eventlinkservice.service';
 import { CreatlinkserviceService } from '../new/creatlinkservice.service';
 import { environment } from 'src/environments/environment';
@@ -14,7 +15,8 @@ import { environment } from 'src/environments/environment';
 export class PartyDetailShowComponent implements OnInit {
   users: any
   baseURL: string=environment.sideUrl;
-  constructor(private router: Router, private partydetailservice: PartydetailInserviceService, private homeNavDataServices: HomeNavDataservicesService, private eventlinkservive: EventlinkserviceService, private creatlinkservice:CreatlinkserviceService) {
+  constructor(private router: Router, private partydetailservice: PartydetailInserviceService, private homeNavDataServices: HomeNavDataservicesService, private eventlinkservive: EventlinkserviceService, private creatlinkservice:CreatlinkserviceService,
+    private deleteservice:DeleteServiceService) {
     //     this.partydetailservice.users().subscribe((data:any)=>{
     //       console.log(data, "this is data in party Detail ts file")
     // this.users=data
@@ -36,8 +38,10 @@ export class PartyDetailShowComponent implements OnInit {
     localStorage.setItem("Id", data)
     localStorage.setItem("ParticipantName", Name)
   }
-  Delete(){
-    
+  Delete(data:any){
+this.deleteservice.deleteData({user_id:data}).subscribe((Response:any)=>{
+  console.log(Response)
+})
   }
   ngOnInit(): void {
     console.log('subject emit')
