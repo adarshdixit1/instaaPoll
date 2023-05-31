@@ -74,7 +74,7 @@ float: right;
 }
 
 
-@media (max-width: 767px) {
+/* @media (max-width: 767px) {
     .contain{
         box-shadow: none;
         width: 23rem;
@@ -124,12 +124,11 @@ float: right;
     .linktitle{
         width: 20rem;
         /* display: flex;
-        justify-content: center; */
+        justify-content: center; 
     }
     /* #inputbox{
 
     }
     #admin{
 
-    } */
-}
+    } } */

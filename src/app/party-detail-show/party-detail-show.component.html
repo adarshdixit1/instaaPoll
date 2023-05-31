@@ -1,16 +1,23 @@
 <div class="container">
-  <div class="block">
-    <button class="btn btn-primary" (click)="submit()">Creat Events</button>
-    <div class="contain" *ngFor="let user of users">
+  <div class="block row justify-content-center">
+    <div class="col-md-2">
+      <button class="btn btn-primary btn-sm" (click)="submit()">Creat Events</button>
+    </div>
+    <div class="col-12">
+<div class="row justify-content-center">
+    <div class="card my-4 p-3 col-md-7 border shadow" *ngFor="let user of users">
       <div class="title">{{user.Name | titlecase}} | {{user.Place| titlecase}}</div>
-      <div> {{user.StartDate | date: 'dd-MM-yyyy'}} | {{user.StartTime}}</div>
+      <div class="lh-base"> {{user.StartDate | date: 'dd-MM-yyyy'}} | {{user.StartTime}}</div>
       <div class="button">
-        <div><button type="button"  id="First" class="btn btn-primary" (click)="openPopup(user.Id,user.Name)">Creat Link</button></div>
-        <div><button id="Secound" class="btn btn-primary" (click)="add(user.Id,user.Name)">Add Participant</button></div>
-        <div><button id="third" class="btn btn-primary" (click)="Rating(user.Id,user.Name)"> View Rating</button></div>
-        <button type="button" id="First" class="btn btn-danger" (click)="Delete(user.Id)" >Delete</button>
+        <div><button type="button"  id="First" class="btn btn-primary btn-sm" (click)="openPopup(user.Id,user.Name)">Creat Link</button></div>
+        <div><button id="Secound" class="btn btn-primary btn-sm" (click)="add(user.Id,user.Name)">Add Participant</button></div>
+        <div><button id="third" class="btn btn-primary btn-sm" (click)="Rating(user.Id,user.Name)"> View Rating</button></div>
+        <button type="button" id="First" class="btn btn-danger btn-sm" (click)="Delete(user.Id)" >Delete</button>
       </div>
     </div>
+  </div>
+          
+  </div>
   </div>
 </div>
 

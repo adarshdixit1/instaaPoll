@@ -20,7 +20,8 @@ data = localStorage.getItem('check');
     Place: "",
     Date: "",
     Time: "",
-    Description: ""
+    Description: "",
+    Hour:""
   }
 
   constructor(private route: Router, private http: HttpClient, private partyservice: PartyServiceService, private homeNavDataServices:HomeNavDataservicesService) { }

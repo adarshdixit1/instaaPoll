@@ -15,6 +15,7 @@ formData ={
   name:"",
   email:"",
   password:"",
+  conformPassword:""
 }
 
 // displayheading=false
@@ -27,17 +28,23 @@ ngOnInit(): void {
 }
   constructor(private route:Router, private ragisterservice:RagisterserviceService, private homeNavDataService:HomeNavDataservicesService ){}
   onSubmit(){
-    console.log(this.formData)
+    // console.log(this.formData)
     const payload=this.formData;
+    if(this.formData.conformPassword !=this.formData.password){
+      this.Errorheading=true;
+    }
+    else{
     this.ragisterservice.postData(payload).subscribe((response: any) => {
      let boolean = response.Boolean
+    //  console.log(boolean)
      if(boolean==1){
       this.route.navigate(['/login']);
      }
      else{
-      Errorheading:boolean=true;
+      this.Errorheading=true;
      }
       });
+    }
   }
 
   // submit() {

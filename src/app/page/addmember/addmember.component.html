@@ -1,19 +1,25 @@
-<div class="contain">
-    <div class="container">
-        <h1 class="heading">{{title | titlecase}}</h1>
-        <button id="admin" class="btn btn-primary" (click)="Back()">Back</button>
-        <div class="show">
-            <form #myForm="ngForm" (ngSubmit)="OnSubmit()" class="form">
-                <div class="form-group">
-                    <input type="text" class="form-control" id="name" [(ngModel)]="formData.Name" name="something"
-                        placeholder="Particiapant Full Name">
+<div class="row justify-content-center">
+    <div class="card justify-content-center col-md-6 my-4 p-1 boder shadow">
+        <h1 class="text-center my-1">{{title | titlecase}}</h1>
+        <!-- <button class="btn btn-primary col-md-3 my-3" (click)="Back()">Back</button> -->
+        <div class="my-4 mx-2">
+        <div class="form-inline">
+            <form #myForm="ngForm" (ngSubmit)="OnSubmit()" class="form-inline">
+                <div class="d-flex">
+                    <div class="form-group mb-2 col-md-6">
+                        <input type="text" class="form-control col-md-6" id="name" [(ngModel)]="formData.Name"
+                            name="something" placeholder="Particiapant Full Name">
+                    </div>
+                    <button type="submit" class="btn btn-primary mx-1 mb-2" id="button">Add</button>
                 </div>
-                <button type="submit" class="btn btn-primary" id="button">Add</button>
             </form>
-            <div class="Add" *ngFor="let person of people">
+        </div>
+        <div class="my-2">
+            <div class="mx-2 overflow-auto" *ngFor="let person of people">
                 <li>{{person.Name}}</li>
             </div>
         </div>
+    </div>
     </div>
 
 </div>

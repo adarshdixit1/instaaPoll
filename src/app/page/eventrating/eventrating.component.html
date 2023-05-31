@@ -1,24 +1,30 @@
 <div class="container" [ngStyle]="{'display':displayContainer}">
-    <div class="contain">
-        <div class="title"><h1>{{event.Name | titlecase}}</h1></div>
-        <form #myForm="ngForm" (ngSubmit)="Onsubmit()" class="form">
-            <div class="scroll-bar">
-                <div *ngFor="let participant of participants; let i =index;" class="pstar">
-                    <span class="font">{{participant.Name}}</span>
-                    <ngb-rating class="star" [max]="5" [(ngModel)]="ratingData.value[i]" name="something" ></ngb-rating>
+    <div class="row justify-content-center">
+    <div class="card border shadow p-3 col-md-6 my-3">
+        <div class="font-weight-bold text-center"><h1>{{event.Name | titlecase}}</h1></div>
+        <form #myForm="ngForm" (ngSubmit)="Onsubmit()" class="form my-4">
+            <div class="scroll-bar p-3">
+                <div *ngFor="let participant of participants; let i =index;" class="pstar font-light">
+                    <span class="font font-weight-light fs-3">{{participant.Name}}</span>
+                    <ngb-rating class="star fs-3 font-weight-bold" [max]="5" [(ngModel)]="ratingData.value[i]" name="something" ></ngb-rating>
                 </div>
                 <button class="btn btn-primary" id="submit_button">Submit</button>
             </div>
         </form>
     </div>
 </div>
+</div>
 
-<div class="container"  [ngStyle]="{'display':displayStyle}">
-    <div class="Response">
-        <h1>Thank you for our response</h1>
+<div class="row justify-content-center"  [ngStyle]="{'display':displayStyle}">
+    <!-- <div class="row justify-content-center"> -->
+    <div class="boder shadow col-md-6 my-3 p-3 row justify-content-center">
+        <div class="col-md-10">
+        <h1 class="">Thank you for our response</h1>
         <h4>your rating is submitted</h4>
-        <button class="btn btn-primary"><a href="/login" class="HomePageButton">Back To Home Page</a></button>
+        <div class="row justify-content-center my-3">
+        <button class="btn btn-primary col-md-5"><a href="/login" class="HomePageButton">Back To Home Page</a></button>
     </div>
-    
+    </div>
+</div>
 </div>
 

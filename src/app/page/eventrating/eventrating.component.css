@@ -1,22 +1,18 @@
 .container {
-    /* height: 35rem; */
     display: flex;
-    justify-content: center;
-    margin-top: 2rem;
-    width: 100%;
+    /* justify-content: center; */
+    /* margin-top: 2rem; */
+    /* width: 100%; */
   }
   
-  .contain {
-    box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
-    /* height: 32rem; */
-    border-radius: 13px;
+  /* .contain {
     width: 50rem;
     overflow: hidden;
     padding: 3rem;
     padding-top: 1rem;
     border-top: 4px solid #362c59;
     margin: auto;
-  }
+  } */
 .Response{
   box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
   height: 10rem;
@@ -83,7 +79,7 @@
  } 
 
  .scroll-bar{
-  height: 25rem;
+  /* height: 25rem; */
 width: 100%;
   overflow-y:scroll;
  }

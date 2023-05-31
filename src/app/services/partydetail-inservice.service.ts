@@ -21,7 +21,7 @@ export class PartydetailInserviceService {
     // const body=JSON.stringify(payload);
     // console.log(payload,"this is from partydetailin service in party-detail")
     // return this.http.post(this.baseURL+'dashboard/party_detail', payload,{'headers':headers});
-    return this.http.post('https://instaapoll.com/api/dashboard/party_detail', payload,{'headers':headers});
+    return this.http.post(this.baseURL+'dashboard/party_detail', payload,{'headers':headers});
   }
 
   countData(payload:any){
