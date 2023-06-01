@@ -17,6 +17,7 @@ export class AddmemberComponent implements OnInit {
   users: any
   people: any
   data: any;
+  Boolean:boolean=false;
 
   // to get login-form data
   formData = {
@@ -54,9 +55,13 @@ export class AddmemberComponent implements OnInit {
 
   
   OnSubmit() {
+    this.formData.Name=this.formData.Name.trim()
+    const payload = this.formData
+    console.log(payload)
+    if(this.formData.Name!=''){
     console.log(this.formData)
     // console.log("this is data of partytopic")
-    const payload = this.formData
+    
     this.memberservice.postData(payload).subscribe((response) => {
       // this.data = response
       // console.log(response)
@@ -64,14 +69,21 @@ export class AddmemberComponent implements OnInit {
       // return this.data
       this.load_data()
       this.formData.Name='';
-    });
+      
+    });}
+else{
+  this.Boolean=true
+  console.log(true)
+  this.formData.Name='';
+}
+   
   }
   Back(){
     this.route.navigate(['/events']);
   }
   title:any
   ngOnInit(): void {
-    console.log('subject emit')
+    // console.log('subject emit')
       this.homeNavDataServices.AddDashboard.next(true);
       this.homeNavDataServices.AddNav.next(false);
        this.title =localStorage.getItem('ParticipantName')
@@ -81,7 +93,7 @@ export class AddmemberComponent implements OnInit {
 
   load_data(){
     this.participantservice.postData(this.formData).subscribe((response:any)=>{
-      console.log(response,"this is response from participant table")
+      // console.log(response,"this is response from participant table")
       this.people= response
       })
     // this.http.get('http://localhost:500/participant').subscribe((data: any) => {
