@@ -90,6 +90,7 @@ this.deleteservice.deleteData({user_id:data}).subscribe((Response:any)=>{
     this.eventlinkservive.eventlink({hour: this.formData.Hour, link: this.link, event_id: this.EventId}).subscribe((data: any) => {
       console.log(data, "this is data in party Detail ts file")
       this.users = data
+      this.closePopup();
     })
   }
 creatlink(){

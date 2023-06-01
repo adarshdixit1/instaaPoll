@@ -16,10 +16,14 @@
         </div>
         <div class="my-2">
             <div class="mx-2 overflow-auto" *ngFor="let person of people">
-                <li>{{person.Name}}</li>
+                <li>
+                    <span class="fs-5 font-weight-light">{{person.Name}}</span>
+                    <span><mat-icon class="text-center p-3">delete</mat-icon></span>
+                </li>
+               
+                <!-- <li>{{person.Name}} <a><mat-icon class="fa-2x">delete</mat-icon></a></li> -->
             </div>
         </div>
     </div>
     </div>
-
 </div>

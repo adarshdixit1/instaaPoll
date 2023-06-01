@@ -28,6 +28,8 @@ import { EventratingComponent } from './page/eventrating/eventrating.component';
 import { CreatlinkformComponent } from './page/creatlinkform/creatlinkform.component';
 import { AfterEventRatingComponent } from './page/after-event-rating/after-event-rating.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material/icon';
 
 
 
@@ -53,6 +55,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     EventratingComponent,
     CreatlinkformComponent,
     AfterEventRatingComponent,
+
     // CourseDialogComponent,
   ],
   imports: [
@@ -61,7 +64,10 @@ import { NgxPaginationModule } from 'ngx-pagination';
     NgbModule,
     FormsModule,
     HttpClientModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    BrowserAnimationsModule,
+    MatIconModule,
+    BrowserModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

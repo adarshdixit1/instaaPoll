@@ -59,3 +59,14 @@ li a{
 #logo{
     border-radius: 4px;
 }
+
+.navbar-brand img
+{
+    background: no-repeat;
+    height: 50px;
+    width: 100px;
+    /* position: relative; */
+    /* background: url(../../../assets/InstaaPollLogo.png); */
+    /* width: 170px; */
+    /* left: 15px; */
+}
