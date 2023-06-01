@@ -42,7 +42,7 @@ data = localStorage.getItem('check');
     })
   }
   submit() {
-    this.route.navigate(['/events']);
+    this.route.navigate(['/add-participant']);
   }
 
   ngOnInit(): void {

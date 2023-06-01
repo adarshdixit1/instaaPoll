@@ -19,7 +19,7 @@
             <div class="mx-2 overflow-auto" *ngFor="let person of people">
                 <li>
                     <span class="fs-5 font-weight-light">{{person.Name}}</span>
-                    <span><mat-icon class="text-center p-3">delete</mat-icon></span>
+                    <span class="justify-content-end col-md-3"><mat-icon class=" p-3 text-right text-danger" (click)="delete(person.Id)">delete</mat-icon></span>
                 </li>
                
                 <!-- <li>{{person.Name}} <a><mat-icon class="fa-2x">delete</mat-icon></a></li> -->

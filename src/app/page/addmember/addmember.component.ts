@@ -3,6 +3,8 @@ import { MemberServiceService } from 'src/app/services/member-service.service';
 import { ParticipantserviceService } from 'src/app/serivces/participantservice.service';
 import { PartytopicInserviceService } from 'src/app/serivces/partytopic-inservice.service';
 import { HomeNavDataservicesService } from 'src/app/new/home-nav-dataservices.service';
+import { ParticipantDeleteServicService } from 'src/app/new/participant-delete-servic.service';
+
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
@@ -34,7 +36,8 @@ export class AddmemberComponent implements OnInit {
     private memberservice: MemberServiceService,
     private participantservice: ParticipantserviceService,
     private partytopicservice: PartytopicInserviceService,
-    private homeNavDataServices:HomeNavDataservicesService
+    private homeNavDataServices:HomeNavDataservicesService,
+    private ParticipantDeleteService:ParticipantDeleteServicService
   ) {
 // for send data in database
 // this.participantservice.postData(this.formData).subscribe((response: any) => {})
@@ -57,9 +60,9 @@ export class AddmemberComponent implements OnInit {
   OnSubmit() {
     this.formData.Name=this.formData.Name.trim()
     const payload = this.formData
-    console.log(payload)
+    // console.log(payload)
     if(this.formData.Name!=''){
-    console.log(this.formData)
+    // console.log(this.formData)
     // console.log("this is data of partytopic")
     
     this.memberservice.postData(payload).subscribe((response) => {
@@ -73,7 +76,7 @@ export class AddmemberComponent implements OnInit {
     });}
 else{
   this.Boolean=true
-  console.log(true)
+  // console.log(true)
   this.formData.Name='';
 }
    
@@ -95,6 +98,7 @@ else{
     this.participantservice.postData(this.formData).subscribe((response:any)=>{
       // console.log(response,"this is response from participant table")
       this.people= response
+      // console.log(this.people)
       })
     // this.http.get('http://localhost:500/participant').subscribe((data: any) => {
     //     console.log(data, "this is data of participant"); // handle the response data here
@@ -102,5 +106,13 @@ else{
     //     console.log(this.people)
     //     this.route.navigate(['/Add_Participant'])
     //   });
+  }
+
+  delete(Id:any){
+// console.log(Id)
+this.ParticipantDeleteService.delete({participantId:Id}).subscribe((response:any)=>{
+  console.log(response)
+  this.load_data();
+})
   }
 }
