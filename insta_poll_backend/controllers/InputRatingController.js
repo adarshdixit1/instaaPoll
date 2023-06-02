@@ -6,10 +6,10 @@ const ParticipantNameForRating=(req,res)=>{
     // res.json("test");
     const data= req.body.event_id
     // console.log(req.body,"this is input name for rating")
-    const sql=`SELECT * FROM akash.events where Id=${data};`
+    const sql=`SELECT * FROM events where Id=${data};`
     let participantsDetail;
     let eventDetail;
-    const participant=`SELECT * FROM akash.participants where Event=${data};`
+    const participant=`SELECT * FROM participants where Event=${data};`
     // data = {};
     connection.query(sql,function(err,result){
         eventDetail = result[0]

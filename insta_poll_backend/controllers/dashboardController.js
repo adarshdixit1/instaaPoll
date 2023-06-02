@@ -6,7 +6,7 @@ const getPartyDetails= (req,res)=>{
     // res.json("test");
     const data= req.body.user_id
     // console.log(data)
-    const sql=`SELECT * FROM akash.events where User=${data};`
+    const sql=`SELECT * FROM events where User=${data};`
 
     connection.query(sql,function(err,result){
         // console.log(err)

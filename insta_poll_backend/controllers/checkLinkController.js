@@ -1,13 +1,14 @@
 
 const connection = require("../config/database")
+const constant = require("../config/constant")
 
 
 const ValidatingLink = async (req, res) => {
 let event_id = req.body.event_id;
-console.log(event_id);
+console.log(event_id,"this is event id in valid link");
 
 // sql qurey
-const sql = `SELECT * FROM akash.event_link where Event='${event_id}';`
+const sql = `SELECT * FROM event_link where Event='${event_id}';`
 
 connection.query(sql,function(err,result){
     const data = result[0]
