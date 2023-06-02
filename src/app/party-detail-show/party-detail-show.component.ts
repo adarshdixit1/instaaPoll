@@ -5,6 +5,7 @@ import { HomeNavDataservicesService } from '../new/home-nav-dataservices.service
 import { DeleteServiceService } from '../new/delete-service.service';
 import { EventlinkserviceService } from '../new/eventlinkservice.service';
 import { CreatlinkserviceService } from '../new/creatlinkservice.service';
+import { ValidLinkServiceService } from '../new/valid-link-service.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -15,8 +16,13 @@ import { environment } from 'src/environments/environment';
 export class PartyDetailShowComponent implements OnInit {
   users: any
   baseURL: string=environment.sideUrl;
-  constructor(private router: Router, private partydetailservice: PartydetailInserviceService, private homeNavDataServices: HomeNavDataservicesService, private eventlinkservive: EventlinkserviceService, private creatlinkservice:CreatlinkserviceService,
-    private deleteservice:DeleteServiceService) {
+  constructor(private router: Router, 
+    private partydetailservice: PartydetailInserviceService,
+     private homeNavDataServices: HomeNavDataservicesService,
+      private eventlinkservive: EventlinkserviceService,
+       private creatlinkservice:CreatlinkserviceService,
+    private deleteservice:DeleteServiceService,
+    private ValidateLinkService:ValidLinkServiceService) {
     //     this.partydetailservice.users().subscribe((data:any)=>{
     //       console.log(data, "this is data in party Detail ts file")
     // this.users=data
@@ -40,18 +46,18 @@ export class PartyDetailShowComponent implements OnInit {
   }
   Delete(data:any){
 this.deleteservice.deleteData({user_id:data}).subscribe((Response:any)=>{
-  console.log(Response)
+  // console.log(Response)
 })
   }
   ngOnInit(): void {
-    console.log('subject emit')
+    // console.log('subject emit')
     this.homeNavDataServices.AddDashboard.next(true);
   
     if (localStorage.getItem('check')) {
       let val = localStorage.getItem('check');
       this.partydetailservice.postData({ user_id: val }).subscribe((response: any) => {
         this.users = response
-        console.log(this.users)
+        // console.log(this.users)
       })
     } else {
       this.router.navigate(['/login'])
@@ -61,17 +67,31 @@ this.deleteservice.deleteData({user_id:data}).subscribe((Response:any)=>{
   displayStyle = "none";
   Title: any
   EventId: any
+  Boolean:boolean=false
+  linkExpiryMessage:string=""
   openPopup(data: any, Name: any) {
     this.displayStyle = "block";
     localStorage.setItem("Id", data)
-    this.link = this.baseURL+'eventrating/' + data
     localStorage.setItem("ParticipantName", Name)
     this.EventId = data
     this.payload();
-// this.creatlink();
+this.ValidateLink(data);
+// console.log("this.is open popup")
   }
   closePopup() {
     this.displayStyle = "none";
+  }
+  ValidateLink(Id:any){
+    this.ValidateLinkService.validate({event_id:Id}).subscribe((response:any)=>{
+if(response.Boolean==1){
+  this.link = this.baseURL+'eventrating/' + Id
+  this.Boolean=true
+}
+else {
+  this.linkExpiryMessage="Link is expired"
+}
+    })
+   
   }
 
   payload() {
@@ -86,9 +106,9 @@ this.deleteservice.deleteData({user_id:data}).subscribe((Response:any)=>{
     // Link: ''
   }
   OnSubmit() {
-    console.log(this.formData, "this is formData of creatlink")
+    // console.log(this.formData, "this is formData of creatlink")
     this.eventlinkservive.eventlink({hour: this.formData.Hour, link: this.link, event_id: this.EventId}).subscribe((data: any) => {
-      console.log(data, "this is data in party Detail ts file")
+      // console.log(data, "this is data in party Detail ts file")
       this.users = data
     })
   }

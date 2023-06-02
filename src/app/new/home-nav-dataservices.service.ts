@@ -10,4 +10,5 @@ export class HomeNavDataservicesService {
   constructor() { }
   AddNav = new Subject<boolean>();
   AddDashboard = new Subject<boolean>();
+  SubmitLink=new Subject<boolean>();
 }

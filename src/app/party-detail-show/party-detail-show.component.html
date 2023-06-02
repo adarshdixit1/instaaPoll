@@ -26,18 +26,19 @@
   <div class="block2">
     <div class="linktitle"><h1>{{Title| titlecase}}</h1></div>
     <div>
-      <span>Your link : </span><span ><a href={{link}}>{{link}}</a></span>
+      <span>{{linkExpiryMessage}}</span>
+      <span *ngIf="Boolean">Your link : </span><span ><a href={{link}}>{{link}}</a></span>
     </div>
-    <form #myForm="ngForm" (ngSubmit)="OnSubmit()">
+    <!-- <form #myForm="ngForm" (ngSubmit)="OnSubmit()">
       <span class="form-group" id="inputbox">
           <label>Select Active Hours</label>
           <input type="number" class="form-control" id="party" [(ngModel)]="formData.Hour" name="something"  placeholder="Duration of rating">
-      </span>
-<div>
-  <button id="admin" type="submit" class="btn btn-primary me-2">Submit</button>
-      <button id="admin" type="button" class="btn btn-outline-primary" (click)="closePopup()">Close</button>
+      </span> -->
+<div class="row justify-content-center">
+  <!-- <button id="admin" type="submit" class="btn btn-primary me-2">Submit</button> -->
+      <button id="admin" type="button" class="btn btn-outline-primary col-md-3 my-4" (click)="closePopup()">Close</button>
 </div>   
 
-  </form>
+  <!-- </form> -->
   </div>
 </section>

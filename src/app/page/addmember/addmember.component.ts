@@ -4,6 +4,8 @@ import { ParticipantserviceService } from 'src/app/serivces/participantservice.s
 import { PartytopicInserviceService } from 'src/app/serivces/partytopic-inservice.service';
 import { HomeNavDataservicesService } from 'src/app/new/home-nav-dataservices.service';
 import { ParticipantDeleteServicService } from 'src/app/new/participant-delete-servic.service';
+import { ValidLinkServiceService } from 'src/app/new/valid-link-service.service';
+import { environment } from 'src/environments/environment';
 
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -15,11 +17,12 @@ import { Router } from '@angular/router';
 })
 export class AddmemberComponent implements OnInit {
   // for recving Id of event
- 
+  baseURL: string=environment.sideUrl
   users: any
   people: any
   data: any;
   Boolean:boolean=false;
+  
 
   // to get login-form data
   formData = {
@@ -37,7 +40,8 @@ export class AddmemberComponent implements OnInit {
     private participantservice: ParticipantserviceService,
     private partytopicservice: PartytopicInserviceService,
     private homeNavDataServices:HomeNavDataservicesService,
-    private ParticipantDeleteService:ParticipantDeleteServicService
+    private ParticipantDeleteService:ParticipantDeleteServicService,
+    private ValidateLinkService:ValidLinkServiceService
   ) {
 // for send data in database
 // this.participantservice.postData(this.formData).subscribe((response: any) => {})
@@ -98,6 +102,8 @@ else{
     this.participantservice.postData(this.formData).subscribe((response:any)=>{
       // console.log(response,"this is response from participant table")
       this.people= response
+      // let data=this.formData.Event
+      // localStorage.setItem("Id", data)
       // console.log(this.people)
       })
     // this.http.get('http://localhost:500/participant').subscribe((data: any) => {
@@ -114,5 +120,34 @@ this.ParticipantDeleteService.delete({participantId:Id}).subscribe((response:any
   console.log(response)
   this.load_data();
 })
+  }
+
+  // for show the link
+  displayStyle = "none";
+  link: string = ''
+  linkExpiryMessage:string=""
+  LinkBoolean:boolean=false
+  CreatLink(){
+this.displayStyle="block";
+let Id = localStorage.getItem("Id")
+// this.link = this.baseURL+'eventrating/' + Id
+this.ValidateLink(Id);
+  }
+ 
+  closePopup() {
+    this.displayStyle = "none";
+  }
+  ValidateLink(Id:any){
+    this.ValidateLinkService.validate({event_id:Id}).subscribe((response:any)=>{
+      console.log()
+if(response.Boolean==1){
+  this.link = this.baseURL+'eventrating/' + Id
+  this.LinkBoolean=true
+}
+else {
+  this.linkExpiryMessage="Link is expired"
+}
+    })
+   
   }
 }
