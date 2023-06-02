@@ -6,6 +6,7 @@ import { DeleteServiceService } from '../new/delete-service.service';
 import { EventlinkserviceService } from '../new/eventlinkservice.service';
 import { CreatlinkserviceService } from '../new/creatlinkservice.service';
 import { ValidLinkServiceService } from '../new/valid-link-service.service';
+import { EditServiceService } from '../new/edit-service.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -22,7 +23,9 @@ export class PartyDetailShowComponent implements OnInit {
       private eventlinkservive: EventlinkserviceService,
        private creatlinkservice:CreatlinkserviceService,
     private deleteservice:DeleteServiceService,
-    private ValidateLinkService:ValidLinkServiceService) {
+    private ValidateLinkService:ValidLinkServiceService,
+    private editService:EditServiceService
+    ) {
     //     this.partydetailservice.users().subscribe((data:any)=>{
     //       console.log(data, "this is data in party Detail ts file")
     // this.users=data
@@ -45,19 +48,31 @@ export class PartyDetailShowComponent implements OnInit {
     localStorage.setItem("ParticipantName", Name)
   }
   Delete(data:any){
-this.deleteservice.deleteData({user_id:data}).subscribe((Response:any)=>{
+this.deleteservice.deleteData({event_id:data}).subscribe((Response:any)=>{
   // console.log(Response)
+  this.loadData();
 })
   }
   ngOnInit(): void {
     // console.log('subject emit')
     this.homeNavDataServices.AddDashboard.next(true);
-  
+  this.loadData();
+    // if (localStorage.getItem('check')) {
+    //   let val = localStorage.getItem('check');
+    //   this.partydetailservice.postData({ user_id: val }).subscribe((response: any) => {
+    //     this.users = response
+    //     console.log(this.users)
+    //   })
+    // } else {
+    //   this.router.navigate(['/login'])
+    // }
+  }
+  loadData(){
     if (localStorage.getItem('check')) {
       let val = localStorage.getItem('check');
       this.partydetailservice.postData({ user_id: val }).subscribe((response: any) => {
         this.users = response
-        // console.log(this.users)
+        console.log(this.users)
       })
     } else {
       this.router.navigate(['/login'])
@@ -113,8 +128,14 @@ else {
     })
   }
 creatlink(){
-  this.creatlinkservice.creatlink({event_id:this.EventId,}).subscribe((data:any)=>{
+  this.creatlinkservice.creatlink({event_id:this.EventId}).subscribe((data:any)=>{
 
   })
+}
+
+Edit(id:any){
+// this.editService.editEvent({event_id:id}).subscribe((response:any)=>{
+
+// })
 }
 }

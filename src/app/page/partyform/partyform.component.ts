@@ -39,7 +39,7 @@ export class PartyformComponent implements OnInit {
     // console.log(this.formData, "this is party_form party_form data")
     // localStorage.setItem("hour",this.formData.Hour)
     this.partyservice.postData(this.formData).subscribe((response: any) => {
-      console.log(response, "this is response in partyform")
+      // console.log(response, "this is response in partyform")
       if (response.Boolean == 1) {
         this.displayheading = false
     this.homeNavDataServices.SubmitLink.next(true)
@@ -64,7 +64,7 @@ export class PartyformComponent implements OnInit {
   }
   SubmitLink(link:any,Id:any){
     this.eventlinkservive.eventlink({hour: this.formData.Hour, link:link, event_id:Id}).subscribe((data: any) => {
-      console.log(data, "this is data after submit link is work")
+      // console.log(data, "this is data after submit link is work")
     })
   }
 
@@ -73,7 +73,7 @@ export class PartyformComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('subject emit')
+    // console.log('subject emit')
     this.homeNavDataServices.AddDashboard.next(true);
   }
 }
