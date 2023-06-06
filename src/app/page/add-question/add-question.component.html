@@ -1,0 +1,38 @@
+<div class="row justify-content-center">
+    <div class="card justify-content-center col-md-6 my-4 p-1 boder shadow">
+        <h1 class="text-center my-1">{{title | titlecase}}</h1>
+                <!-- <button class="btn btn-primary col-md-3 my-3" (click">CreatLink</button> -->
+        <div class="my-4 mx-2">
+            <div class="form-inline">
+                <form #myForm="ngForm" (ngSubmit)="OnSubmit()" class="form-inline">
+                    <div class="d-flex">
+                        <div class="form-group mb-2 col-md-6">
+                            <div class="mb-3">
+                                <label for="exampleFormControlTextarea1" class="form-label">Enter Question</label>
+                                <textarea class="form-control" [(ngModel)]="formData.question" minlength="10" maxlength="100" name="something" required minlength="2" maxlength="20" id="exampleFormControlTextarea1" rows="3"></textarea>
+                              </div>
+                            <!-- <input type="text" class="form-control col-md-6" id="text" [(ngModel)]="formData.question"
+                                pattern="[a-zA-Z ]*" name="something" required minlength="2" maxlength="20"
+                                placeholder="Enter a Question">  -->
+                        </div>
+                        <div class="mx-1 mb-2 h-25 my-6">
+                            <button type="submit" class="btn btn-primary mx-1 mb-2 h-25 my-5" [disabled]="myForm.invalid"
+                            id="button">Add</button>
+                        </div>
+                        
+                    </div>
+                    <div *ngIf="Boolean"><span class="text-danger">*Error invalid Question</span></div>
+                </form>
+            </div>
+            <div class="my-2">
+                <div class="mx-2 overflow-auto" *ngFor="let question of question">
+                    <li>
+                        <span class="fs-5 font-weight-light">{{question.question}}</span>
+                        <!-- <span class="justify-content-end col-md-3"><mat-icon class=" p-3 text-right text-danger" -->
+                                <!-- (click)="delete(question.Id)">delete</mat-icon></span> -->
+                    </li>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

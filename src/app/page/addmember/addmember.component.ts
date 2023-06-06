@@ -5,6 +5,7 @@ import { PartytopicInserviceService } from 'src/app/serivces/partytopic-inservic
 import { HomeNavDataservicesService } from 'src/app/new/home-nav-dataservices.service';
 import { ParticipantDeleteServicService } from 'src/app/new/participant-delete-servic.service';
 import { ValidLinkServiceService } from 'src/app/new/valid-link-service.service';
+import { QuestionServiceService } from 'src/app/new/question-service.service';
 import { environment } from 'src/environments/environment';
 
 import { HttpClient } from '@angular/common/http';
@@ -27,6 +28,7 @@ export class AddmemberComponent implements OnInit {
   // to get login-form data
   formData = {
     Event:localStorage.getItem('Id'),
+    Question:"",
     Name: "",
   }
   
@@ -41,39 +43,26 @@ export class AddmemberComponent implements OnInit {
     private partytopicservice: PartytopicInserviceService,
     private homeNavDataServices:HomeNavDataservicesService,
     private ParticipantDeleteService:ParticipantDeleteServicService,
-    private ValidateLinkService:ValidLinkServiceService
-  ) {
-// for send data in database
-// this.participantservice.postData(this.formData).subscribe((response: any) => {})
+    private ValidateLinkService:ValidLinkServiceService,
+    private questionservice:QuestionServiceService
+  ) {}
 
-// this.http.get('http://localhost:500/participant').subscribe((data: any) => {
-//   console.log(data, "this is data of participant"); // handle the response data here
-//   this.people = data
-//   console.log(this.people)
-//   this.route.navigate(['/Add_Participant'])
-// });
-
-// this.participantservice.postData(this.formData).subscribe((response:any)=>{
-// console.log(response,"this is response from participant table")
-// this.people= response
-// })
-
+getQuestion(){
+  this.questionservice.getquestion({event_id:0}).subscribe((response:any)=>{
+    console.log(response)
+    
+  })
 }
 
-  
   OnSubmit() {
     this.formData.Name=this.formData.Name.trim()
+    
     const payload = this.formData
     // console.log(payload)
     if(this.formData.Name!=''){
     // console.log(this.formData)
-    // console.log("this is data of partytopic")
     
     this.memberservice.postData(payload).subscribe((response) => {
-      // this.data = response
-      // console.log(response)
-      // console.log(this.data)
-      // return this.data
       this.load_data()
       this.formData.Name='';
       
@@ -95,6 +84,7 @@ else{
       this.homeNavDataServices.AddNav.next(false);
        this.title =localStorage.getItem('ParticipantName')
        this.load_data()
+       this.getQuestion();
       
   }
 
@@ -149,5 +139,8 @@ else {
 }
     })
    
+  }
+  AddQuestion(){
+    this.route.navigate(['/add-question']);
   }
 }

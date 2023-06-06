@@ -3,13 +3,17 @@
     <div class="card border shadow p-3 col-md-6 my-3">
         <div class="font-weight-bold text-center"><h1>{{event.Name | titlecase}}</h1></div>
         <form #myForm="ngForm" (ngSubmit)="Onsubmit()" class="form my-4">
-            <div class="scroll-bar p-3">
-                <div *ngFor="let participant of participants; let i =index;" class="pstar font-light">
-                    <span class="font font-weight-light fs-3">{{participant.Name}}</span>
-                    <ngb-rating class="star fs-3 font-weight-bold" [max]="5" [(ngModel)]="ratingData.value[i]" name="something" ></ngb-rating>
+            <div *ngFor="let que of question; let i = index;">
+                <h1>{{que.question}} {{que.que_id}}</h1>
+                <div class="scroll-bar p-3">
+                    <div *ngFor="let participant of que.participants; let j = index;" class="pstar font-light">
+                        <span class="font font-weight-light fs-3">{{participant.Name}} {{participant.Id}} {{question[i].participants[j].rating}}</span>
+                        <input type="number" [(ngModel)]="question[i].participants[j].rating" name="{{que.que_id}}-{{participant.Id}}">
+                        <!-- <ngb-rating class="star fs-3 font-weight-bold" [max]="5" [(rate)]="question[i].participants[j].rating" required  ></ngb-rating> -->
+                    </div>
                 </div>
-                <button class="btn btn-primary" id="submit_button" [disabled]="myForm.invalid">Submit</button>
             </div>
+            <button class="btn btn-primary" id="submit_button" >Submit</button>
         </form>
     </div>
 </div>

@@ -14,44 +14,48 @@ import { FrontPageComponent } from './page/front-page/front-page.component';
 import { RagisterComponent } from './page/ragister/ragister.component';
 import { ProfileComponent } from './page/profile/profile.component';
 import { EventratingComponent } from './page/eventrating/eventrating.component';
+import { AddQuestionComponent } from './page/add-question/add-question.component';
 
 
 const routes: Routes = [
   {
-    path: "login" ,component: HomeComponent ,title:'InstaaPoll'
+    path: "login" ,component: HomeComponent ,title:'InstaaPoll', 
   },
   {
     path: "add-participant", component: AddmemberComponent ,title:'InstaaPoll-add-participant'
   },
   {
-    path: "view-rating", component: RatingpageComponent ,title:'InstaaPoll-view-rating'
+    path: "view-rating", component: RatingpageComponent ,title:'InstaaPoll-view-rating' 
   },
   {
     path: "dashboard", component: AdminpageComponent ,title:'InstaaPoll-dashboard'
   },
   {
-    path: "add-event", component: PartyformComponent ,title:'InstaaPoll-add-event'
+    path: "add-event", component: PartyformComponent ,title:'InstaaPoll-add-event' 
   },
   {
-    path: "events", component: PartyDetailShowComponent ,title:'InstaaPoll-events'
+    path: "events", component: PartyDetailShowComponent ,title:'InstaaPoll-events' 
   },
   {
-    path: "profile", component: ProfileComponent ,title:'InstaaPoll-profile'
+    path: "profile", component: ProfileComponent ,title:'InstaaPoll-profile' 
   },
   {
-    path: "Select-Event", component: SelectPartyComponent ,title:'InstaaPoll-Select-Event'
+    path: "Select-Event", component: SelectPartyComponent ,title:'InstaaPoll-Select-Event' 
   },
   {
-    path: "Add-Competition", component: AddCompetitionComponent ,title:'InstaaPoll-Add-Competition'
+    path: "Add-Competition", component: AddCompetitionComponent ,title:'InstaaPoll-Add-Competition' 
   },
   {
     path: "eventrating/:eventId", component: EventratingComponent,title:'InstaaPoll-eventrating'
   },
   {
-    path: "front-page", component: FrontPageComponent ,title:'InstaaPoll-front-page'
+    path: "front-page", component: FrontPageComponent ,title:'InstaaPoll-front-page' 
   },
   {
     path: "register", component: RagisterComponent ,title:'InstaaPoll-register'
+  },
+  {
+    path: "add-question", component: AddQuestionComponent ,title:'InstaaPoll-question' 
   },
   {
     path:"**",component:HomeComponent ,title:'InstaaPoll'

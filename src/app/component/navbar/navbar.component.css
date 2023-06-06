@@ -43,6 +43,9 @@ font-size: large;
 /* #right{
     float: right;
 } */
+*{
+    cursor:pointer;  
+}
 
 #backgroundColor{
     background-color: blue;

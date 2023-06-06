@@ -30,6 +30,7 @@ import { AfterEventRatingComponent } from './page/after-event-rating/after-event
 import { NgxPaginationModule } from 'ngx-pagination';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
+import { AddQuestionComponent } from './page/add-question/add-question.component';
 
 
 
@@ -55,6 +56,7 @@ import { MatIconModule } from '@angular/material/icon';
     EventratingComponent,
     CreatlinkformComponent,
     AfterEventRatingComponent,
+    AddQuestionComponent,
 
     // CourseDialogComponent,
   ],
