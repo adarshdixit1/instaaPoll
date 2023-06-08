@@ -25,39 +25,43 @@ export class EventratingComponent implements OnInit {
     // this.extractedId ="1";
     // console.log(this.extractedId, "this is from route");
     this.participantData();
-    this.questiondata();
+    // this.questiondata();
 
   }
   // for getting qestion data
   question: any
-  questiondata() {
-    this.questionService.getquestion({ event_id: '0' }).subscribe((Response: any) => {
-      // console.log(Response)
-      this.question = Response.map((val: any, i: number) => { return { que_id: val.Id, question: val.Question, participants: [...this.participants] } })
-      // console.log(this.question ,"this is question for print")
-      this.displayLoading="none"
-      this.isLoading=false
-    })
-  }
+  // questiondata() {
+  //   this.questionService.getquestion({ event_id: '0' }).subscribe((Response: any) => {
+  //     // console.log(Response)
+  //     this.question = Response.map((val: any, i: number) => { return { que_id: val.Id, question: val.Question, participants: [...this.participants] } })
+  //     // console.log(this.question ,"this is question for print")
+  //     this.displayLoading="none"
+  //     this.isLoading=false
+  //   })
+  // }
   // for geting Event detail by id
   event: any
   participants: any
   participantData() {
     let val = this.extractedId;
-    console.log(val, "this is value in ts component")
+    console.log(val, "this is value in ts component");
+    this.isLoading= true;
+    this.displayLoading="block"
     this.eventratingservice.participantName({ event_id: val }).subscribe((response: any) => {
       this.event = response.eventDetail
       this.participants = response.participantsDetail.map((val: any) => { return { ...val, rating: [] } })
-      // console.log(this.event, "this is user data in ts file")
-      return this.participants
+      this.question = response.questions.map((val: any, i: number) => { return { que_id: val.Id, question: val.Question, participants: [...this.participants] } })
+      
+      this.isLoading=false
+      this.displayLoading="none"
 
     })
   }
   displayStyle = "none";
   displayContainer = "block"
   displayError = false
-  displayLoading="block"
-  isLoading=true
+  displayLoading="none"
+  isLoading=false
 
 
 

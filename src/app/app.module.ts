@@ -33,6 +33,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AddQuestionComponent } from './page/add-question/add-question.component';
 import { RaterComponent } from './page/rater/rater.component';
+import { ShowQuestionComponent } from './page/show-question/show-question.component';
 
 
 
@@ -60,6 +61,7 @@ import { RaterComponent } from './page/rater/rater.component';
     AfterEventRatingComponent,
     AddQuestionComponent,
     RaterComponent,
+    ShowQuestionComponent,
 
     // CourseDialogComponent,
   ],

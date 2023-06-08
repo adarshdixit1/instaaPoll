@@ -1,27 +1,32 @@
-<div class="container" [ngStyle]="{'display':displayContainer}">
-    <div class="row justify-content-center">
-    <div class="card border shadow p-3 col-md-10 my-3">
-        <div class="font-weight-bold text-center"><h1>{{event.Name | titlecase}}</h1></div>
-        <div class="row justify-content-center"><h4 class="text-center text-danger" *ngIf="displayError">Invalid Rating</h4></div>
+<div class="container" [ngStyle]="{'display':displayContainer}" >
+    <div class="row justify-content-center" *ngIf="!isLoading; else loading;">
+        <div class="card border shadow p-3 col-md-10 my-3">
+            <div class="font-weight-bold text-center"><h1>{{event.Name | titlecase}}</h1></div>
+            <div class="row justify-content-center"><h4 class="text-center text-danger" *ngIf="displayError">Invalid Rating</h4></div>
 
-        <form #myForm="ngForm" (ngSubmit)="Onsubmit()" class="form my-4">
-            <div *ngIf="question">
-            <div *ngFor="let que of question; let i = index;">
-                <h1>{{i+1}}  {{que.question}}</h1>
-                <div class="scroll-bar p-3">
-                    <div *ngFor="let participant of que.participants; let j = index;" class="pstar font-light">
-                        <span class="font font-weight-light fs-4">{{i+1}}{{j+1}} {{participant.Name}}</span>
-                        <!-- <span>({{que.que_id}}-{{participant.Id}})</span> -->
-                        <input class="mx-1 form-control " type="number" [(ngModel)]="participant.rating[i]" name="{{que.que_id}}-{{participant.Id}}" required placeholder="rate between 1 -5">
-                        <!-- <ngb-rating class="star fs-3 font-weight-bold" [max]="5" [(rate)]="question[i].participants[j].rating" required  ></ngb-rating> -->
+            <form #myForm="ngForm" (ngSubmit)="Onsubmit()" class="form my-4">
+                <div *ngIf="question">
+                    <div *ngFor="let que of question; let i = index;">
+                        <h1>{{i+1}}  {{que.question}}</h1>
+                        <div class="scroll-bar p-3">
+                            <div *ngFor="let participant of que.participants; let j = index;" class="pstar font-light">
+                                <span class="font font-weight-light fs-4">{{participant.Name}}</span>
+                                <!-- <span>({{que.que_id}}-{{participant.Id}})</span> -->
+                                <!-- <input class="mx-1 form-control " type="number"  [(ngModel)]="participant.rating[i]" name="{{que.que_id}}-{{participant.Id}}" required placeholder="rate between 1 -5"> -->
+                                <ngb-rating class="star fs-3 font-weight-bold" [max]="5" [(ngModel)]="participant.rating[i]" name="{{que.que_id}}-{{participant.Id}}" required  ></ngb-rating>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+                <button class="btn btn-primary" id="submit_button" [disabled]="myForm.invalid" >Submit</button>
+            </form>
         </div>
-            <button class="btn btn-primary" id="submit_button" [disabled]="myForm.invalid" >Submit</button>
-        </form>
     </div>
-</div>
+    <ng-template #loading>
+        <div class="row justify-content-center">
+            <mat-progress-spinner *ngIf="isLoading" class="loading" mode="indeterminate"></mat-progress-spinner>
+        </div>
+    </ng-template>
 </div>
 
 <div  [ngStyle]="{'display':displayStyle}">
@@ -39,9 +44,9 @@
     <!-- <div class="row justify-content-center"> -->
 </div>
 
-<section class="display" [ngStyle]="{'display':displayLoading}" >
+<!-- <section class="display" [ngStyle]="{'display':displayLoading}" >
     <div class="block2">
       <mat-progress-spinner *ngIf="isLoading" class="loading" mode="indeterminate"></mat-progress-spinner>
     </div>
-  </section>
+  </section> -->
 
