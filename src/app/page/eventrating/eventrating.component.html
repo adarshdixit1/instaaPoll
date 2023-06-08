@@ -37,6 +37,11 @@
     </div>
     </div>
     <!-- <div class="row justify-content-center"> -->
-    
 </div>
+
+<section class="display" [ngStyle]="{'display':displayLoading}" >
+    <div class="block2">
+      <mat-progress-spinner *ngIf="isLoading" class="loading" mode="indeterminate"></mat-progress-spinner>
+    </div>
+  </section>
 

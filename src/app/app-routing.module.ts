@@ -47,7 +47,7 @@ const routes: Routes = [
     path: "Add-Competition", component: AddCompetitionComponent ,title:'InstaaPoll-Add-Competition'
   },
   {
-    path: "eventrating/:eventId", component: EventratingComponent,title:'InstaaPoll-eventrating'
+    path: "eventrating/:eventId", component: EventratingComponent,title:'InstaaPoll-rating'
   },
   {
     path: "front-page", component: FrontPageComponent ,title:'InstaaPoll-front-page' 

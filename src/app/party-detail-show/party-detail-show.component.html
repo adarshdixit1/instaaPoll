@@ -3,10 +3,11 @@
     <div class="col-md-2 text-center">
       <button class="btn btn-primary btn-sm" (click)="submit()">Creat Events</button>
     </div>
-    <div class="col-12">
+    <div class="col-12 container">
 <div class="row align-items-center flex-column-reverse">
   <!-- <mat-progress-spinner *ngIf="isLoading" mode="indeterminate"></mat-progress-spinner> -->
-    <div class="card my-4 p-3 col-md-7 border shadow" *ngFor="let user of users">
+  <div *ngIf="users" class="col-md-7">
+    <div class="card my-4 p-3  border shadow" *ngFor="let user of users">
       <div class="title">{{user.Name | titlecase}} | {{user.Place| titlecase}}</div>
       <div class="lh-base"> {{user.StartDate | date: 'dd-MM-yyyy'}} | {{user.StartTime}}</div>
       <div class="button">
@@ -17,6 +18,7 @@
         <!-- <button type="button" id="First" class="btn btn-danger btn-sm" (click)="Edit(user.Id)" >Edit</button> -->
       </div>
     </div>
+  </div>
   </div>
           
   </div>

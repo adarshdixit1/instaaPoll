@@ -35,6 +35,8 @@ export class EventratingComponent implements OnInit {
       // console.log(Response)
       this.question = Response.map((val: any, i: number) => { return { que_id: val.Id, question: val.Question, participants: [...this.participants] } })
       // console.log(this.question ,"this is question for print")
+      this.displayLoading="none"
+      this.isLoading=false
     })
   }
   // for geting Event detail by id
@@ -54,6 +56,8 @@ export class EventratingComponent implements OnInit {
   displayStyle = "none";
   displayContainer = "block"
   displayError = false
+  displayLoading="block"
+  isLoading=true
 
 
 

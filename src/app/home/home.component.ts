@@ -20,6 +20,7 @@ export class HomeComponent {
   }
   // displayheading=false
   displayheading: boolean = false;
+  displayStyle = "none";
 
   constructor(private http: HttpClient,
     private loginService: LoginServiceService,
@@ -28,6 +29,7 @@ export class HomeComponent {
     private homeNavDataService: HomeNavDataservicesService) { }
   onSubmit() {
     this.isLoading = true;
+    this.displayStyle = "block";
     // console.log(this.formData)
     const payload = this.formData;
     // localStorage.setItem('check', this.data.Boolean);
@@ -38,6 +40,7 @@ export class HomeComponent {
       // console.log(response)
       if (response.Boolean == 1) {
         this.isLoading = false
+        this.displayStyle = "none";
         localStorage.setItem("Name", response.user.Name)
         localStorage.setItem("Email", this.formData.email)
         this.sessionservice.postData(response.user.Id)
@@ -47,6 +50,8 @@ export class HomeComponent {
       else {
         localStorage.removeItem('check');
         this.displayheading = true
+        this.isLoading = false
+        this.displayStyle = "none";
         // console.log(this.displayheading)
       }
       return this.data

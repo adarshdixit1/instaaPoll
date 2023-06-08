@@ -18,7 +18,13 @@
                 <button type="submit" class="btn btn-primary" [disabled]="myform.invalid" id="button">Submit</button>
               </form>
         </div>
-        <mat-progress-spinner *ngIf="isLoading" mode="indeterminate"></mat-progress-spinner>
+        
     </div>
 </div>
+
+<section class="display" [ngStyle]="{'display':displayStyle}" >
+  <div class="block2">
+    <mat-progress-spinner *ngIf="isLoading" class="loading" mode="indeterminate"></mat-progress-spinner>
+  </div>
+</section>
 <app-footer></app-footer>
