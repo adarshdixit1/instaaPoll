@@ -15,6 +15,7 @@ import { RagisterComponent } from './page/ragister/ragister.component';
 import { ProfileComponent } from './page/profile/profile.component';
 import { EventratingComponent } from './page/eventrating/eventrating.component';
 import { AddQuestionComponent } from './page/add-question/add-question.component';
+import { RaterComponent } from './page/rater/rater.component';
 
 
 const routes: Routes = [
@@ -25,25 +26,28 @@ const routes: Routes = [
     path: "add-participant", component: AddmemberComponent ,title:'InstaaPoll-add-participant'
   },
   {
-    path: "view-rating", component: RatingpageComponent ,title:'InstaaPoll-view-rating' 
+    path: "view-rating", component: RatingpageComponent ,title:'InstaaPoll-view-rating' , canActivate:[AuthenticationGuard]
   },
   {
     path: "dashboard", component: AdminpageComponent ,title:'InstaaPoll-dashboard'
   },
   {
-    path: "add-event", component: PartyformComponent ,title:'InstaaPoll-add-event' 
+    path: "add-event", component: PartyformComponent ,title:'InstaaPoll-add-event' , canActivate:[AuthenticationGuard]
   },
   {
-    path: "events", component: PartyDetailShowComponent ,title:'InstaaPoll-events' 
+    path: "events", component: PartyDetailShowComponent ,title:'InstaaPoll-events' , canActivate:[AuthenticationGuard]
   },
   {
-    path: "profile", component: ProfileComponent ,title:'InstaaPoll-profile' 
+    path: "profile", component: ProfileComponent ,title:'InstaaPoll-profile' , canActivate:[AuthenticationGuard]
   },
   {
-    path: "Select-Event", component: SelectPartyComponent ,title:'InstaaPoll-Select-Event' 
+    path: "Select-Event", component: SelectPartyComponent ,title:'InstaaPoll-Select-Event' , canActivate:[AuthenticationGuard]
   },
   {
-    path: "Add-Competition", component: AddCompetitionComponent ,title:'InstaaPoll-Add-Competition' 
+    path: "Add-Competition", component: AddCompetitionComponent ,title:'InstaaPoll-Add-Competition' , canActivate:[AuthenticationGuard]
+  },
+  {
+    path: "rater/:eventId", component: RaterComponent,title:'InstaaPoll-eventrating'
   },
   {
     path: "eventrating/:eventId", component: EventratingComponent,title:'InstaaPoll-eventrating'
@@ -52,10 +56,10 @@ const routes: Routes = [
     path: "front-page", component: FrontPageComponent ,title:'InstaaPoll-front-page' 
   },
   {
-    path: "register", component: RagisterComponent ,title:'InstaaPoll-register'
+    path: "register", component: RagisterComponent ,title:'InstaaPoll-register', canActivate:[AuthenticationGuard]
   },
   {
-    path: "add-question", component: AddQuestionComponent ,title:'InstaaPoll-question' 
+    path: "add-question", component: AddQuestionComponent ,title:'InstaaPoll-question' , canActivate:[AuthenticationGuard]
   },
   {
     path:"**",component:HomeComponent ,title:'InstaaPoll'

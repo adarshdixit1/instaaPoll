@@ -15,4 +15,11 @@ baseURL: string=environment.apiUrl;
     const body=JSON.stringify(payload);
     return this.http.post(this.baseURL+'events/eventlink', body,{'headers':headers});
   }
+
+  validateRatingPage(payload:any){
+    const headers = { 'content-type': 'application/json'}  
+    const body=JSON.stringify(payload);
+    console.log(payload)
+    return this.http.post(this.baseURL+'inputRating/validateRater', body,{'headers':headers});
+  }
 }

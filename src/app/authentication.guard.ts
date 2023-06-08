@@ -8,11 +8,11 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthenticationGuard implements CanActivate {
-  constructor(private seesionservice:SessionStorageService, private router:Router){}
+  constructor(private sesionservice:SessionStorageService, private router:Router){}
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-        if (this.seesionservice.storedData) {
+        if (this.sesionservice.storedData) {
           return true;
         } else {
           this.router.navigate(['/home']);

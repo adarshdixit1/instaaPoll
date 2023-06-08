@@ -22,4 +22,10 @@ baseURL=environment.apiUrl
     return this.http.post(this.baseURL+'addQuestion/showQuestion', body,{'headers':headers})
 
   }
+
+  deleteQuestion(payload:any){
+    const headers ={'content-type':'application/json'}
+    const body=JSON.stringify(payload);
+    return this.http.post(this.baseURL+'addQuestion/delete', body,{'headers':headers})
+  }
 }

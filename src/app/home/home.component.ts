@@ -11,42 +11,56 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-data:any
+  isLoading: boolean = false;
+  data: any
   // to get login-form data
-formData ={
-  email:"",
-  password:"",
-}
-// displayheading=false
-displayheading:boolean=false;
+  formData = {
+    email: "",
+    password: "",
+  }
+  // displayheading=false
+  displayheading: boolean = false;
 
-constructor(private http:HttpClient, private loginService:LoginServiceService, private router:Router, private sessionservice:SessionStorageService, private homeNavDataService:HomeNavDataservicesService){}
-onSubmit(){
-  // console.log(this.formData)
-  const payload=this.formData;
-  // localStorage.setItem('check', this.data.Boolean);
-  this.loginService.postData(payload).subscribe((response: any) => {
-    this.data=response
-    // console.log(response.user.Name,"this is data response in login")
-    // console.log(response)
-    if(response.Boolean==1){
-      this.router.navigate(['/dashboard']);
-      localStorage.setItem("Name",response.user.Name)
-      localStorage.setItem("Email",this.formData.email)
-      this.sessionservice.postData(response.user.Id)
-    }
-    else{
-      localStorage.removeItem('check');
-      this.displayheading=true
-      // console.log(this.displayheading)
-    }
-    return this.data
+  constructor(private http: HttpClient,
+    private loginService: LoginServiceService,
+    private router: Router,
+    private sessionservice: SessionStorageService,
+    private homeNavDataService: HomeNavDataservicesService) { }
+  onSubmit() {
+    this.isLoading = true;
+    // console.log(this.formData)
+    const payload = this.formData;
+    // localStorage.setItem('check', this.data.Boolean);
+    this.loginService.postData(payload).subscribe((response: any) => {
+      this.data = response
+      // this.isLoading=false
+      // console.log(response.user.Name,"this is data response in login")
+      // console.log(response)
+      if (response.Boolean == 1) {
+        this.isLoading = false
+        localStorage.setItem("Name", response.user.Name)
+        localStorage.setItem("Email", this.formData.email)
+        this.sessionservice.postData(response.user.Id)
+        this.dashboard();
+
+      }
+      else {
+        localStorage.removeItem('check');
+        this.displayheading = true
+        // console.log(this.displayheading)
+      }
+      return this.data
     });
-}
+  }
 
-ngOnInit(): void {
-  // console.log('subject emit')
+  dashboard() {
+    this.router.navigate(['/dashboard']);
+  }
+
+  ngOnInit(): void {
+    // console.log('subject emit')
+    // localStorage.removeItem('check');
     this.homeNavDataService.AddNav.next(true);
     this.homeNavDataService.AddDashboard.next(false);
-}
+  }
 }

@@ -16,17 +16,20 @@ export class AddQuestionComponent implements OnInit {
 
   // for getting Question from frontpage
   formData = {
-    Event: localStorage.getItem('Id'),
+    event_id: localStorage.getItem('Id'),
     question: "",
   }
 
 
   // for loading a question form database to frontpage
   load_data() {
-    let payload = this.formData.Event
-    console.log(this.formData.Event)
-    this.questionService.getquestion({ event_id: payload }).subscribe((Response: any) => { })
-    this.question = {}
+    let payload = this.formData.event_id
+    // console.log(this.formData.event_id)
+    this.questionService.getquestion({ event_id: 0 }).subscribe((response: any) => { 
+      this.question=response
+    })
+
+    console.log(this.question,"these is question from database")
 
   }
 
@@ -52,9 +55,12 @@ export class AddQuestionComponent implements OnInit {
     }
   }
   // for delete a question
-  // delete(Id:any){
-
-  // // }
+  delete(Id:any){
+this.questionService.deleteQuestion({question_id:Id}).subscribe((reponse:any)=>{
+  this.load_data()
+  this.formData.question = '';
+})
+  }
 
   // CreatLink() {
   //   // this.displayStyle="block";

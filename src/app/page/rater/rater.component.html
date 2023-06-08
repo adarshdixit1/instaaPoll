@@ -1,8 +1,7 @@
-
 <div class="row justify-content-center my-4">
     <div class="border shadow col-md-3 p-3">
         <div class="">
-          <div class="errorHeading" *ngIf="displayheading"><h3>* Invalid password and email</h3></div>
+          <div class="errorHeading" *ngIf="displayheading"><h3>* Invalid</h3></div>
             <form #myform="ngForm" (ngSubmit)="onSubmit()">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Email</label>
@@ -10,15 +9,9 @@
                   <span class="error" *ngIf="name.invalid && name.touched">Invalid email</span>
                   </div>
                 <br>
-                <div class="form-group">
-                  <label for="exampleInputPassword1">Password</label>
-                  <input type="password" name="password" class="form-control" minlength="5" maxlength="15" required #password="ngModel"  id="exampleInputPassword1" [(ngModel)]="formData.password" placeholder="Enter Password">
-                  <span class="error" *ngIf="password.invalid&&password.touched">invalid password </span>
-                </div>
                 <button type="submit" class="btn btn-primary" [disabled]="myform.invalid" id="button">Submit</button>
               </form>
         </div>
         <mat-progress-spinner *ngIf="isLoading" mode="indeterminate"></mat-progress-spinner>
     </div>
 </div>
-<app-footer></app-footer>

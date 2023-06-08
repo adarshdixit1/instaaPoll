@@ -54,6 +54,7 @@ this.deleteservice.deleteData({event_id:data}).subscribe((Response:any)=>{
 })
   }
   ngOnInit(): void {
+    isLoading:
     // console.log('subject emit')
     this.homeNavDataServices.AddDashboard.next(true);
   this.loadData();

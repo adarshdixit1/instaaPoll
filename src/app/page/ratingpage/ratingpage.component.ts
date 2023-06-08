@@ -16,38 +16,31 @@ export class RatingpageComponent implements OnInit{
   formData = {
     Event:localStorage.getItem('Id')
   }
-  constructor(private ratingservice:RatingserviceService, private route:Router, private homeNavDataServices:HomeNavDataservicesService,  private participantservice: ParticipantserviceService,){
+  constructor(private ratingservice:RatingserviceService,
+     private route:Router, 
+     private homeNavDataServices:HomeNavDataservicesService,
+    private participantservice: ParticipantserviceService,){
   }
 
   // this is the title for rating page
   data:any
   title:any
   people: any
+  RaterCount:any
   ngOnInit(): void {
     this.homeNavDataServices.AddDashboard.next(true);
     this.homeNavDataServices.AddNav.next(false);
     this.title =localStorage.getItem('ParticipantName')
     // this.Participant_data();
     this.Rating_data();
+    this.rater_count();
   }
 
-  // Participant_data(){
-  //   let participantId={
-  //     Id:[]
-  //   }
-  //   let i=0
-  //   this.participantservice.ratingData(this.formData).subscribe((response:any)=>{
-  //     console.log(response,"this is response from participant table")
-  //     this.people= response
-  //     for (let i = 0; i <response.length; i++) {
-  //       // participantId.Id[i]=this.people[i].Id
-  //       console.log ("Block statement execution no." + i);
-  //     }
-  //     this.data=participantId
-  //     this.Rating_data(this.data, this.people);
-  //     })
-      
-  // }
+  rater_count(){
+    this.ratingservice.raterCount({event_id:this.formData.Event}).subscribe((response:any)=>{
+this.RaterCount=response.count
+    })
+  }
 
   Rating_data(){
     console.log(this.formData,"this is formdata in rating page component")

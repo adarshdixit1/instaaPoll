@@ -30,7 +30,9 @@ import { AfterEventRatingComponent } from './page/after-event-rating/after-event
 import { NgxPaginationModule } from 'ngx-pagination';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AddQuestionComponent } from './page/add-question/add-question.component';
+import { RaterComponent } from './page/rater/rater.component';
 
 
 
@@ -57,6 +59,7 @@ import { AddQuestionComponent } from './page/add-question/add-question.component
     CreatlinkformComponent,
     AfterEventRatingComponent,
     AddQuestionComponent,
+    RaterComponent,
 
     // CourseDialogComponent,
   ],
@@ -70,6 +73,7 @@ import { AddQuestionComponent } from './page/add-question/add-question.component
     BrowserAnimationsModule,
     MatIconModule,
     BrowserModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
