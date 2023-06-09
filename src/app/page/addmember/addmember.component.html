@@ -9,7 +9,7 @@
                     <div class="d-flex">
                         <div class="form-group mb-2 col-md-6">
                             <input type="text" class="form-control col-md-6" id="name" [(ngModel)]="formData.Name"
-                                pattern="[a-zA-Z ]*" name="something" required minlength="2" maxlength="20"
+                                pattern="[a-zA-Z .]*" name="something" required minlength="2" maxlength="20"
                                 placeholder="Particiapant Full Name">
                         </div>
                         <button type="submit" class="btn btn-primary mx-1 mb-2" [disabled]="myForm.invalid"

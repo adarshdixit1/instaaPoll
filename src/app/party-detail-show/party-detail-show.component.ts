@@ -5,7 +5,7 @@ import { HomeNavDataservicesService } from '../new/home-nav-dataservices.service
 import { DeleteServiceService } from '../new/delete-service.service';
 import { EventlinkserviceService } from '../new/eventlinkservice.service';
 import { CreatlinkserviceService } from '../new/creatlinkservice.service';
-import { ValidLinkServiceService } from '../new/valid-link-service.service';
+// import { ValidLinkServiceService } from '../new/valid-link-service.service';
 import { EditServiceService } from '../new/edit-service.service';
 import { environment } from 'src/environments/environment';
 
@@ -23,7 +23,7 @@ export class PartyDetailShowComponent implements OnInit {
       private eventlinkservive: EventlinkserviceService,
        private creatlinkservice:CreatlinkserviceService,
     private deleteservice:DeleteServiceService,
-    private ValidateLinkService:ValidLinkServiceService,
+    // private ValidateLinkService:ValidLinkServiceService,
     private editService:EditServiceService
     ) {
     //     this.partydetailservice.users().subscribe((data:any)=>{
@@ -91,23 +91,24 @@ this.deleteservice.deleteData({event_id:data}).subscribe((Response:any)=>{
     localStorage.setItem("ParticipantName", Name)
     this.EventId = data
     this.payload();
-this.ValidateLink(data);
-// console.log("this.is open popup")
+// this.ValidateLink(data);
   }
   closePopup() {
     this.displayStyle = "none";
   }
   ValidateLink(Id:any){
-    this.ValidateLinkService.validate({event_id:Id}).subscribe((response:any)=>{
-if(response.Boolean==1){
-  this.link = this.baseURL+'eventrating/' + Id
-  this.Boolean=true
-}
-else {
-  this.linkExpiryMessage="Link is expired"
-}
-    })
+//     this.ValidateLinkService.validate({event_id:Id}).subscribe((response:any)=>{
+// if(response.Boolean==1){
+//   this.link = this.baseURL+'eventrating/' + Id
+//   this.Boolean=true
+// }
+// else {
+//   this.linkExpiryMessage="Link is expired"
+// }
+//     })
    
+
+    // this.Boolean=
   }
 
   payload() {

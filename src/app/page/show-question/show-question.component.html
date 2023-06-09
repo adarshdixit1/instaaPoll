@@ -1,7 +1,7 @@
 <div class="row justify-content-center">
     <div class="card justify-content-center col-md-6 my-4 p-1 boder shadow">
         <h1 class="text-center my-1">{{title | titlecase}}</h1>
-                <button class="btn btn-primary col-md-3 my-3">Add Question</button>
+                <button class="btn btn-primary col-md-3 my-3" (click)="AddQuestion()">Add Question</button>
         <div class="my-4 mx-2">
             <div class="my-2">
                 <div class="mx-2 overflow-auto" *ngFor="let question of question">

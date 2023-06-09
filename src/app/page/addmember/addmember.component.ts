@@ -28,7 +28,7 @@ export class AddmemberComponent implements OnInit {
   // to get login-form data
   formData = {
     Event:localStorage.getItem('Id'),
-    Question:"",
+    // Question:"",
     Name: "",
   }
   
@@ -44,23 +44,47 @@ export class AddmemberComponent implements OnInit {
     private homeNavDataServices:HomeNavDataservicesService,
     private ParticipantDeleteService:ParticipantDeleteServicService,
     private ValidateLinkService:ValidLinkServiceService,
-    private questionservice:QuestionServiceService
+    // private questionservice:QuestionServiceService
   ) {}
 
-getQuestion(){
-  this.questionservice.getquestion({event_id:0}).subscribe((response:any)=>{
-    console.log(response)
+// getQuestion(){
+//   this.questionservice.getquestion({event_id:0}).subscribe((response:any)=>{
+//     console.log(response)
     
-  })
-}
+//   })
+// }
+//  to convert the input test into right format
+// InputConverter(){
+//   const name = this.formData.Name;
+//   const words = name.split(' ');
+//   console.log(words,"this is word to convert")
+
+//   const capitalizedWords = words.map((word) => {
+//     console.log(capitalizedWords,"this is capitalized word")
+ 
+//     const preservedWords = ['Dr.', 'Mr.', 'Ms.'];
+
+//     if (preservedWords.includes(word)) {
+//       this.formData.Name=word
+//       console.log(this.formData.Name, "this is name in formdata")
+//       return this.formData.Name;
+//     } else {
+//       word=word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+//       console.log(word)
+//       this.formData.Name=word
+//       return this.formData.Name
+//     }
+//   });
+// }
+
 
   OnSubmit() {
+    this.formData.Name=this.formData.Name.charAt(0).toUpperCase() + this.formData.Name.slice(1).toLowerCase();
+    console.log(this.formData.Name,"this cpati")
     this.formData.Name=this.formData.Name.trim()
-    
     const payload = this.formData
-    // console.log(payload)
+    console.log(payload)
     if(this.formData.Name!=''){
-    // console.log(this.formData)
     
     this.memberservice.postData(payload).subscribe((response) => {
       this.load_data()
@@ -69,14 +93,12 @@ getQuestion(){
     });}
 else{
   this.Boolean=true
-  // console.log(true)
   this.formData.Name='';
 }
    
   }
-  Back(){
-    this.route.navigate(['/events']);
-  }
+
+
   title:any
   ngOnInit(): void {
     // console.log('subject emit')
@@ -84,7 +106,7 @@ else{
       this.homeNavDataServices.AddNav.next(false);
        this.title =localStorage.getItem('ParticipantName')
        this.load_data()
-       this.getQuestion();
+      //  this.getQuestion();
       
   }
 
@@ -107,7 +129,7 @@ else{
   delete(Id:any){
 // console.log(Id)
 this.ParticipantDeleteService.delete({participantId:Id}).subscribe((response:any)=>{
-  console.log(response)
+  // console.log(response)
   this.load_data();
 })
   }
@@ -129,7 +151,7 @@ this.ValidateLink(Id);
   }
   ValidateLink(Id:any){
     this.ValidateLinkService.validate({event_id:Id}).subscribe((response:any)=>{
-      console.log()
+      // console.log()
 if(response.Boolean==1){
   this.link = this.baseURL+'eventrating/' + Id
   this.LinkBoolean=true

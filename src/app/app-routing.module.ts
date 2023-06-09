@@ -15,6 +15,7 @@ import { RagisterComponent } from './page/ragister/ragister.component';
 import { ProfileComponent } from './page/profile/profile.component';
 import { EventratingComponent } from './page/eventrating/eventrating.component';
 import { AddQuestionComponent } from './page/add-question/add-question.component';
+import { QuestionTemplateComponent } from './page/question-template/question-template.component';
 // import { RaterComponent } from './page/rater/rater.component';
 
 
@@ -53,10 +54,13 @@ const routes: Routes = [
     path: "front-page", component: FrontPageComponent ,title:'InstaaPoll-front-page' 
   },
   {
-    path: "register", component: RagisterComponent ,title:'InstaaPoll-register', canActivate:[AuthenticationGuard]
+    path: "register", component: RagisterComponent ,title:'InstaaPoll-register'
   },
   {
-    path: "add-question", component: AddQuestionComponent ,title:'InstaaPoll-question' , canActivate:[AuthenticationGuard]
+    path: "add-question", component: AddQuestionComponent ,title:'InstaaPoll-question'
+  },
+  {
+    path: "question-template", component: QuestionTemplateComponent ,title:'InstaaPoll-template'
   },
   {
     path:"**",component:HomeComponent ,title:'InstaaPoll'

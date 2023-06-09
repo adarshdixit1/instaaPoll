@@ -34,6 +34,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AddQuestionComponent } from './page/add-question/add-question.component';
 import { RaterComponent } from './page/rater/rater.component';
 import { ShowQuestionComponent } from './page/show-question/show-question.component';
+import { QuestionTemplateComponent } from './page/question-template/question-template.component';
 
 
 
@@ -62,6 +63,7 @@ import { ShowQuestionComponent } from './page/show-question/show-question.compon
     AddQuestionComponent,
     RaterComponent,
     ShowQuestionComponent,
+    QuestionTemplateComponent,
 
     // CourseDialogComponent,
   ],

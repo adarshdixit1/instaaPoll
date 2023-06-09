@@ -14,6 +14,10 @@
         <div><button type="button"  id="First" class="btn btn-primary btn-sm" (click)="openPopup(user.Id,user.Name)">Creat Link</button></div>
         <div><button id="Secound" class="btn btn-primary btn-sm" (click)="add(user.Id,user.Name)">Add Participant</button></div>
         <div><button id="third" class="btn btn-primary btn-sm" (click)="Rating(user.Id,user.Name)"> View Rating</button></div>
+        <!-- <mat-icon (click)="openPopup(user.Id,user.Name)">share</mat-icon>
+        <mat-icon (click)="add(user.Id,user.Name)">person_add</mat-icon>
+        <mat-icon (click)="Rating(user.Id,user.Name)">poll</mat-icon>
+       <mat-icon class="text-danger" (click)="Delete(user.Id)">delete_forever</mat-icon> -->
         <button type="button" id="First" class="btn btn-danger btn-sm" (click)="Delete(user.Id)" >Delete</button>
         <!-- <button type="button" id="First" class="btn btn-danger btn-sm" (click)="Edit(user.Id)" >Edit</button> -->
       </div>
